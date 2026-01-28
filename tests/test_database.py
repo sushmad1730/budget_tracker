@@ -4,8 +4,6 @@ Unit tests for database module.
 
 import pytest
 import os
-import sqlite3
-from pathlib import Path
 from src.database import Database
 
 

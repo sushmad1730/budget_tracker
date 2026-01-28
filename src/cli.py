@@ -4,7 +4,6 @@ Command-line interface for the Budget Tracker application.
 
 import sys
 import logging
-from typing import Optional
 from datetime import datetime
 from src.database import Database
 from src.budget import BudgetManager
