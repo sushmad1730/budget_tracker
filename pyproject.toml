@@ -12,6 +12,9 @@ license = {text = "MIT"}
 authors = [
     {name = "Developer"}
 ]
+dependencies = [
+    "httpx>=0.28.1",
+]
 
 [project.urls]
 Homepage = "https://github.com/example/budget-tracker"

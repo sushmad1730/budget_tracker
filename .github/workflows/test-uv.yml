@@ -2,37 +2,37 @@ name: Test with uv
 
 on:
   push:
-    branches: [ main, dev, feature/* ]
+    branches: [ main]
   pull_request:
-    branches: [ main, dev, feature/* ]
+    branches: [ main ]
 
 jobs:
-  test-uv:
+  test-uv-and-lint:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.11'
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
 
-    - name: Install dependencies
-      run: |
-        uv sync
-        uv sync --group dev
+      - name: Install dependencies
+        run: |
+          uv sync
+          uv sync --group dev
     
-    - name: install uv
-    uses: astral-sh/setup-uv@v4
-    with:
-        python-version: '3.11'
-        uv-version: 'latest'
+      - name: install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          python-version: '3.11'
+          uv-version: 'latest'
 
-    - name: Run tests
-      run: |
-        uv run ruff check .
+      - name: Run tests
+        run: |
+          uv run ruff check .
 
-    - name: Run tests
-      run: |
-        uv run pytest tests/
+      - name: Run tests
+        run: |
+          uv run pytest tests/
