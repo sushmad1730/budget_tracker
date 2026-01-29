@@ -18,21 +18,21 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
-        run: |
-          uv sync
-          uv sync --group dev
-    
       - name: install uv
         uses: astral-sh/setup-uv@v4
         with:
           python-version: '3.11'
           uv-version: 'latest'
 
-      - name: Run tests
+      - name: Install dependencies
+        run: |
+          uv sync
+          uv sync --group dev
+
+      - name: Lint
         run: |
           uv run ruff check .
 
-      - name: Run tests
+      - name: Test
         run: |
           uv run pytest tests/
